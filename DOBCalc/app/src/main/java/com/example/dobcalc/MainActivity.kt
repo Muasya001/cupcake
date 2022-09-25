@@ -22,9 +22,9 @@ class MainActivity : AppCompatActivity() {
         tvSelectedDate = findViewById(R.id.tvSelectedDate)
         tvAgeMinutes = findViewById(R.id.tvAgeMinutes)
 
-//        btnDatePicker.setOnClickListener {
-//            clickDatePicker()
-//        }
+        btnDatePicker.setOnClickListener {
+            clickDatePicker()
+        }
     }
 
     private fun clickDatePicker() {
