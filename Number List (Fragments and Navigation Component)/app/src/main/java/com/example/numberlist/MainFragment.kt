@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.numberlist.databinding.FragmentMainBinding
+import com.example.practice.databinding.FragmentMainBinding
 
 class MainFragment : Fragment() {
 
