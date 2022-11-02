@@ -10,7 +10,7 @@
     <EditText
         android:id="@+id/txtItem"
         android:layout_width="0dp"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Enter Item"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add"
-        app:layout_constraintBaseline_toBaselineOf="@+id/txtItem"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txtItem" />
 
