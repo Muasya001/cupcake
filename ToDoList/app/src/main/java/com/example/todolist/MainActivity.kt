@@ -2,6 +2,7 @@ package com.example.todolist
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todolist.databinding.ActivityMainBinding
@@ -24,11 +25,21 @@ class MainActivity : AppCompatActivity() {
 
         val btnAddTodo = binding.btnAddTodo
         btnAddTodo.setOnClickListener {
-            val task = binding.txtItem.text.toString()
-            todoList.add(Todo(task))
-            binding.txtItem.setText("")
-            adapter.notifyDataSetChanged()
+            if (isEmpty()) {
+                binding.txtItem.setText("")
+            } else {
+                val task = binding.txtItem.text.toString()
+                todoList.add(Todo(task))
+                binding.txtItem.setText("")
+                adapter.notifyDataSetChanged()
+            }
         }
+    }
 
+    private fun isEmpty(): Boolean{
+        if(binding.txtItem.text.toString().trim().isEmpty()) {
+            return true
+        }
+        return false
     }
 }
