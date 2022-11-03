@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
                 val task = binding.txtItem.text.toString()
                 todoList.add(Todo(task))
                 binding.txtItem.setText("")
-                adapter.notifyDataSetChanged()
+                adapter.notifyItemInserted(adapter.itemCount)
             }
         }
     }
