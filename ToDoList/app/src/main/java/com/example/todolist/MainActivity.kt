@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todolist.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ItemDelete {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var listRecyclerView: RecyclerView
@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val adapter = TodoAdapter()
+        val adapter = TodoAdapter(this)
         listRecyclerView = binding.listRecyclerView
         listRecyclerView.layoutManager = LinearLayoutManager(this)
         listRecyclerView.adapter = adapter
@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
                 binding.txtItem.setText("")
             } else {
                 val task = binding.txtItem.text.toString()
-                todoList.add(Todo(task))
+                todoList.add(task)
                 binding.txtItem.setText("")
                 adapter.notifyItemInserted(adapter.itemCount)
             }
@@ -41,5 +41,9 @@ class MainActivity : AppCompatActivity() {
             return true
         }
         return false
+    }
+
+    override fun onItemDelete(position: Int) {
+        todoList.removeAt(position)
     }
 }

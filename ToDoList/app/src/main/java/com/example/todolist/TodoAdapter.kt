@@ -5,20 +5,20 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todolist.databinding.ItemViewBinding
 
-class TodoAdapter : RecyclerView.Adapter<ItemViewHolder>() {
+class TodoAdapter(private val listener: ItemDelete) : RecyclerView.Adapter<ItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val binding = ItemViewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         val itemViewHolder = ItemViewHolder(binding)
         itemViewHolder.btnDelete.setOnClickListener {
-            todoList.removeAt(itemViewHolder.adapterPosition)
+            listener.onItemDelete(itemViewHolder.adapterPosition)
             notifyItemRemoved(itemViewHolder.adapterPosition)
         }
         return itemViewHolder
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        holder.tvItem.text = todoList[position].task
+        holder.tvItem.text = todoList[position]
     }
 
     override fun getItemCount(): Int {
@@ -29,4 +29,7 @@ class TodoAdapter : RecyclerView.Adapter<ItemViewHolder>() {
 class ItemViewHolder(private val binding: ItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
     val tvItem = binding.tvItem
     val btnDelete = binding.btnDelete
+}
+interface ItemDelete{
+    fun onItemDelete(position: Int)
 }
