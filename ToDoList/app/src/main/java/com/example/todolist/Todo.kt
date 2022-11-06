@@ -1,3 +1,3 @@
 package com.example.todolist
 
-var todoList = mutableListOf<String>()
+val todoList = mutableListOf<String>()
