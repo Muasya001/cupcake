@@ -36,6 +36,11 @@ class MainActivity : AppCompatActivity(), ItemDelete {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        binding.txtItem.clearFocus()
+    }
+
     private fun isEmpty(): Boolean{
         if(binding.txtItem.text.toString().trim().isEmpty()) {
             return true
